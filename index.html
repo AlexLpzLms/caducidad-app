@@ -22,12 +22,29 @@
   </header>
 
   <main>
+    <div class="filter-bar">
+      <select id="categoryFilter">
+        <option value="todas">Todas las categorías</option>
+        <option value="lacteos">Lácteos</option>
+        <option value="carnes">Carnes / pescado</option>
+        <option value="frutas">Frutas / verduras</option>
+        <option value="congelados">Congelados</option>
+        <option value="despensa">Despensa</option>
+        <option value="otro">Otro</option>
+      </select>
+    </div>
+
     <div id="emptyState" class="empty-state hidden">
       <p>No tienes alimentos guardados todavía.</p>
       <p>Toca el botón <strong>＋</strong> para agregar el primero.</p>
     </div>
 
-    <section id="foodList" class="food-list"></section>
+    <div id="foodGroups"></div>
+
+    <details id="historySection" class="history-section hidden">
+      <summary>Historial de consumidos (<span id="historyCount">0</span>)</summary>
+      <div id="historyList" class="history-list"></div>
+    </details>
   </main>
 
   <!-- Modal para agregar/editar alimento -->
@@ -65,7 +82,10 @@
       <input type="hidden" id="foodId" />
 
       <div class="dialog-actions">
-        <button type="button" id="deleteBtn" class="btn btn-danger hidden">Eliminar</button>
+        <div class="dialog-actions-left">
+          <button type="button" id="deleteBtn" class="btn btn-danger hidden">Eliminar</button>
+          <button type="button" id="consumedBtn" class="btn btn-consumed hidden">Consumido ✓</button>
+        </div>
         <div class="dialog-actions-right">
           <button type="button" id="cancelBtn" class="btn btn-secondary">Cancelar</button>
           <button type="submit" id="saveBtn" class="btn btn-primary">Guardar</button>
